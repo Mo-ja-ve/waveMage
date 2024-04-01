@@ -29,13 +29,13 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/CMake/share/cmake-3.29/Modules/Platform/Windows-windres.cmake"
   "C:/Program Files/CMake/share/cmake-3.29/Modules/Platform/Windows.cmake"
   "C:/Program Files/CMake/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake"
+  "C:/Users/user/proj/CMakeLists.txt"
   "CMakeFiles/3.29.0/CMakeCCompiler.cmake"
   "CMakeFiles/3.29.0/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.29.0/CMakeRCCompiler.cmake"
   "CMakeFiles/3.29.0/CMakeSystem.cmake"
-  "CMakeLists.txt"
-  "headers/lib/cmake/SDL2/sdl2-config-version.cmake"
-  "headers/lib/cmake/SDL2/sdl2-config.cmake"
+  "C:/Users/user/proj/headers/lib/cmake/SDL2/sdl2-config-version.cmake"
+  "C:/Users/user/proj/headers/lib/cmake/SDL2/sdl2-config.cmake"
   )
 
 # The corresponding makefile is:

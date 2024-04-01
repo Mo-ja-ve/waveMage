@@ -128,6 +128,174 @@ wavemage/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/build
 .PHONY : wavemage/fast
 
+headers/include/imgui-master/backends/imgui_impl_opengl2.obj: headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.obj
+.PHONY : headers/include/imgui-master/backends/imgui_impl_opengl2.obj
+
+# target to build an object file
+headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.obj
+.PHONY : headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.obj
+
+headers/include/imgui-master/backends/imgui_impl_opengl2.i: headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.i
+.PHONY : headers/include/imgui-master/backends/imgui_impl_opengl2.i
+
+# target to preprocess a source file
+headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.i
+.PHONY : headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.i
+
+headers/include/imgui-master/backends/imgui_impl_opengl2.s: headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.s
+.PHONY : headers/include/imgui-master/backends/imgui_impl_opengl2.s
+
+# target to generate assembly for a file
+headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.s
+.PHONY : headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.s
+
+headers/include/imgui-master/backends/imgui_impl_sdl2.obj: headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.obj
+.PHONY : headers/include/imgui-master/backends/imgui_impl_sdl2.obj
+
+# target to build an object file
+headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.obj
+.PHONY : headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.obj
+
+headers/include/imgui-master/backends/imgui_impl_sdl2.i: headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.i
+.PHONY : headers/include/imgui-master/backends/imgui_impl_sdl2.i
+
+# target to preprocess a source file
+headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.i
+.PHONY : headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.i
+
+headers/include/imgui-master/backends/imgui_impl_sdl2.s: headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.s
+.PHONY : headers/include/imgui-master/backends/imgui_impl_sdl2.s
+
+# target to generate assembly for a file
+headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.s
+.PHONY : headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.s
+
+headers/include/imgui-master/imgui.obj: headers/include/imgui-master/imgui.cpp.obj
+.PHONY : headers/include/imgui-master/imgui.obj
+
+# target to build an object file
+headers/include/imgui-master/imgui.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.obj
+.PHONY : headers/include/imgui-master/imgui.cpp.obj
+
+headers/include/imgui-master/imgui.i: headers/include/imgui-master/imgui.cpp.i
+.PHONY : headers/include/imgui-master/imgui.i
+
+# target to preprocess a source file
+headers/include/imgui-master/imgui.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.i
+.PHONY : headers/include/imgui-master/imgui.cpp.i
+
+headers/include/imgui-master/imgui.s: headers/include/imgui-master/imgui.cpp.s
+.PHONY : headers/include/imgui-master/imgui.s
+
+# target to generate assembly for a file
+headers/include/imgui-master/imgui.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.s
+.PHONY : headers/include/imgui-master/imgui.cpp.s
+
+headers/include/imgui-master/imgui_demo.obj: headers/include/imgui-master/imgui_demo.cpp.obj
+.PHONY : headers/include/imgui-master/imgui_demo.obj
+
+# target to build an object file
+headers/include/imgui-master/imgui_demo.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.obj
+.PHONY : headers/include/imgui-master/imgui_demo.cpp.obj
+
+headers/include/imgui-master/imgui_demo.i: headers/include/imgui-master/imgui_demo.cpp.i
+.PHONY : headers/include/imgui-master/imgui_demo.i
+
+# target to preprocess a source file
+headers/include/imgui-master/imgui_demo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.i
+.PHONY : headers/include/imgui-master/imgui_demo.cpp.i
+
+headers/include/imgui-master/imgui_demo.s: headers/include/imgui-master/imgui_demo.cpp.s
+.PHONY : headers/include/imgui-master/imgui_demo.s
+
+# target to generate assembly for a file
+headers/include/imgui-master/imgui_demo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.s
+.PHONY : headers/include/imgui-master/imgui_demo.cpp.s
+
+headers/include/imgui-master/imgui_draw.obj: headers/include/imgui-master/imgui_draw.cpp.obj
+.PHONY : headers/include/imgui-master/imgui_draw.obj
+
+# target to build an object file
+headers/include/imgui-master/imgui_draw.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.obj
+.PHONY : headers/include/imgui-master/imgui_draw.cpp.obj
+
+headers/include/imgui-master/imgui_draw.i: headers/include/imgui-master/imgui_draw.cpp.i
+.PHONY : headers/include/imgui-master/imgui_draw.i
+
+# target to preprocess a source file
+headers/include/imgui-master/imgui_draw.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.i
+.PHONY : headers/include/imgui-master/imgui_draw.cpp.i
+
+headers/include/imgui-master/imgui_draw.s: headers/include/imgui-master/imgui_draw.cpp.s
+.PHONY : headers/include/imgui-master/imgui_draw.s
+
+# target to generate assembly for a file
+headers/include/imgui-master/imgui_draw.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.s
+.PHONY : headers/include/imgui-master/imgui_draw.cpp.s
+
+headers/include/imgui-master/imgui_tables.obj: headers/include/imgui-master/imgui_tables.cpp.obj
+.PHONY : headers/include/imgui-master/imgui_tables.obj
+
+# target to build an object file
+headers/include/imgui-master/imgui_tables.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.obj
+.PHONY : headers/include/imgui-master/imgui_tables.cpp.obj
+
+headers/include/imgui-master/imgui_tables.i: headers/include/imgui-master/imgui_tables.cpp.i
+.PHONY : headers/include/imgui-master/imgui_tables.i
+
+# target to preprocess a source file
+headers/include/imgui-master/imgui_tables.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.i
+.PHONY : headers/include/imgui-master/imgui_tables.cpp.i
+
+headers/include/imgui-master/imgui_tables.s: headers/include/imgui-master/imgui_tables.cpp.s
+.PHONY : headers/include/imgui-master/imgui_tables.s
+
+# target to generate assembly for a file
+headers/include/imgui-master/imgui_tables.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.s
+.PHONY : headers/include/imgui-master/imgui_tables.cpp.s
+
+headers/include/imgui-master/imgui_widgets.obj: headers/include/imgui-master/imgui_widgets.cpp.obj
+.PHONY : headers/include/imgui-master/imgui_widgets.obj
+
+# target to build an object file
+headers/include/imgui-master/imgui_widgets.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.obj
+.PHONY : headers/include/imgui-master/imgui_widgets.cpp.obj
+
+headers/include/imgui-master/imgui_widgets.i: headers/include/imgui-master/imgui_widgets.cpp.i
+.PHONY : headers/include/imgui-master/imgui_widgets.i
+
+# target to preprocess a source file
+headers/include/imgui-master/imgui_widgets.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.i
+.PHONY : headers/include/imgui-master/imgui_widgets.cpp.i
+
+headers/include/imgui-master/imgui_widgets.s: headers/include/imgui-master/imgui_widgets.cpp.s
+.PHONY : headers/include/imgui-master/imgui_widgets.s
+
+# target to generate assembly for a file
+headers/include/imgui-master/imgui_widgets.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.s
+.PHONY : headers/include/imgui-master/imgui_widgets.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -161,6 +329,27 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... wavemage
+	@echo ... headers/include/imgui-master/backends/imgui_impl_opengl2.obj
+	@echo ... headers/include/imgui-master/backends/imgui_impl_opengl2.i
+	@echo ... headers/include/imgui-master/backends/imgui_impl_opengl2.s
+	@echo ... headers/include/imgui-master/backends/imgui_impl_sdl2.obj
+	@echo ... headers/include/imgui-master/backends/imgui_impl_sdl2.i
+	@echo ... headers/include/imgui-master/backends/imgui_impl_sdl2.s
+	@echo ... headers/include/imgui-master/imgui.obj
+	@echo ... headers/include/imgui-master/imgui.i
+	@echo ... headers/include/imgui-master/imgui.s
+	@echo ... headers/include/imgui-master/imgui_demo.obj
+	@echo ... headers/include/imgui-master/imgui_demo.i
+	@echo ... headers/include/imgui-master/imgui_demo.s
+	@echo ... headers/include/imgui-master/imgui_draw.obj
+	@echo ... headers/include/imgui-master/imgui_draw.i
+	@echo ... headers/include/imgui-master/imgui_draw.s
+	@echo ... headers/include/imgui-master/imgui_tables.obj
+	@echo ... headers/include/imgui-master/imgui_tables.i
+	@echo ... headers/include/imgui-master/imgui_tables.s
+	@echo ... headers/include/imgui-master/imgui_widgets.obj
+	@echo ... headers/include/imgui-master/imgui_widgets.i
+	@echo ... headers/include/imgui-master/imgui_widgets.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

@@ -69,6 +69,7 @@ include CMakeFiles/wavemage.dir/progress.make
 include CMakeFiles/wavemage.dir/flags.make
 
 CMakeFiles/wavemage.dir/main.cpp.obj: CMakeFiles/wavemage.dir/flags.make
+CMakeFiles/wavemage.dir/main.cpp.obj: CMakeFiles/wavemage.dir/includes_CXX.rsp
 CMakeFiles/wavemage.dir/main.cpp.obj: C:/Users/user/proj/main.cpp
 CMakeFiles/wavemage.dir/main.cpp.obj: CMakeFiles/wavemage.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\user\proj\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/wavemage.dir/main.cpp.obj"
@@ -82,19 +83,138 @@ CMakeFiles/wavemage.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wavemage.dir/main.cpp.s"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\user\proj\main.cpp -o CMakeFiles\wavemage.dir\main.cpp.s
 
+CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.obj: CMakeFiles/wavemage.dir/flags.make
+CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.obj: CMakeFiles/wavemage.dir/includes_CXX.rsp
+CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.obj: C:/Users/user/proj/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp
+CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.obj: CMakeFiles/wavemage.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\user\proj\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.obj -MF CMakeFiles\wavemage.dir\headers\include\imgui-master\backends\imgui_impl_opengl2.cpp.obj.d -o CMakeFiles\wavemage.dir\headers\include\imgui-master\backends\imgui_impl_opengl2.cpp.obj -c C:\Users\user\proj\headers\include\imgui-master\backends\imgui_impl_opengl2.cpp
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.i"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\user\proj\headers\include\imgui-master\backends\imgui_impl_opengl2.cpp > CMakeFiles\wavemage.dir\headers\include\imgui-master\backends\imgui_impl_opengl2.cpp.i
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.s"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\user\proj\headers\include\imgui-master\backends\imgui_impl_opengl2.cpp -o CMakeFiles\wavemage.dir\headers\include\imgui-master\backends\imgui_impl_opengl2.cpp.s
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.obj: CMakeFiles/wavemage.dir/flags.make
+CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.obj: CMakeFiles/wavemage.dir/includes_CXX.rsp
+CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.obj: C:/Users/user/proj/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp
+CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.obj: CMakeFiles/wavemage.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\user\proj\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.obj -MF CMakeFiles\wavemage.dir\headers\include\imgui-master\backends\imgui_impl_sdl2.cpp.obj.d -o CMakeFiles\wavemage.dir\headers\include\imgui-master\backends\imgui_impl_sdl2.cpp.obj -c C:\Users\user\proj\headers\include\imgui-master\backends\imgui_impl_sdl2.cpp
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.i"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\user\proj\headers\include\imgui-master\backends\imgui_impl_sdl2.cpp > CMakeFiles\wavemage.dir\headers\include\imgui-master\backends\imgui_impl_sdl2.cpp.i
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.s"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\user\proj\headers\include\imgui-master\backends\imgui_impl_sdl2.cpp -o CMakeFiles\wavemage.dir\headers\include\imgui-master\backends\imgui_impl_sdl2.cpp.s
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.obj: CMakeFiles/wavemage.dir/flags.make
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.obj: CMakeFiles/wavemage.dir/includes_CXX.rsp
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.obj: C:/Users/user/proj/headers/include/imgui-master/imgui.cpp
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.obj: CMakeFiles/wavemage.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\user\proj\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.obj -MF CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui.cpp.obj.d -o CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui.cpp.obj -c C:\Users\user\proj\headers\include\imgui-master\imgui.cpp
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.i"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\user\proj\headers\include\imgui-master\imgui.cpp > CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui.cpp.i
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.s"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\user\proj\headers\include\imgui-master\imgui.cpp -o CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui.cpp.s
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.obj: CMakeFiles/wavemage.dir/flags.make
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.obj: CMakeFiles/wavemage.dir/includes_CXX.rsp
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.obj: C:/Users/user/proj/headers/include/imgui-master/imgui_demo.cpp
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.obj: CMakeFiles/wavemage.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\user\proj\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.obj -MF CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui_demo.cpp.obj.d -o CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui_demo.cpp.obj -c C:\Users\user\proj\headers\include\imgui-master\imgui_demo.cpp
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.i"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\user\proj\headers\include\imgui-master\imgui_demo.cpp > CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui_demo.cpp.i
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.s"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\user\proj\headers\include\imgui-master\imgui_demo.cpp -o CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui_demo.cpp.s
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.obj: CMakeFiles/wavemage.dir/flags.make
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.obj: CMakeFiles/wavemage.dir/includes_CXX.rsp
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.obj: C:/Users/user/proj/headers/include/imgui-master/imgui_draw.cpp
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.obj: CMakeFiles/wavemage.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\user\proj\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.obj -MF CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui_draw.cpp.obj.d -o CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui_draw.cpp.obj -c C:\Users\user\proj\headers\include\imgui-master\imgui_draw.cpp
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.i"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\user\proj\headers\include\imgui-master\imgui_draw.cpp > CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui_draw.cpp.i
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.s"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\user\proj\headers\include\imgui-master\imgui_draw.cpp -o CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui_draw.cpp.s
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.obj: CMakeFiles/wavemage.dir/flags.make
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.obj: CMakeFiles/wavemage.dir/includes_CXX.rsp
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.obj: C:/Users/user/proj/headers/include/imgui-master/imgui_tables.cpp
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.obj: CMakeFiles/wavemage.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\user\proj\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.obj -MF CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui_tables.cpp.obj.d -o CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui_tables.cpp.obj -c C:\Users\user\proj\headers\include\imgui-master\imgui_tables.cpp
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.i"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\user\proj\headers\include\imgui-master\imgui_tables.cpp > CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui_tables.cpp.i
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.s"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\user\proj\headers\include\imgui-master\imgui_tables.cpp -o CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui_tables.cpp.s
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.obj: CMakeFiles/wavemage.dir/flags.make
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.obj: CMakeFiles/wavemage.dir/includes_CXX.rsp
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.obj: C:/Users/user/proj/headers/include/imgui-master/imgui_widgets.cpp
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.obj: CMakeFiles/wavemage.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\user\proj\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.obj -MF CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui_widgets.cpp.obj.d -o CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui_widgets.cpp.obj -c C:\Users\user\proj\headers\include\imgui-master\imgui_widgets.cpp
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.i"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\user\proj\headers\include\imgui-master\imgui_widgets.cpp > CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui_widgets.cpp.i
+
+CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.s"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\user\proj\headers\include\imgui-master\imgui_widgets.cpp -o CMakeFiles\wavemage.dir\headers\include\imgui-master\imgui_widgets.cpp.s
+
 # Object files for target wavemage
 wavemage_OBJECTS = \
-"CMakeFiles/wavemage.dir/main.cpp.obj"
+"CMakeFiles/wavemage.dir/main.cpp.obj" \
+"CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.obj" \
+"CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.obj" \
+"CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.obj" \
+"CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.obj" \
+"CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.obj" \
+"CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.obj" \
+"CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.obj"
 
 # External object files for target wavemage
 wavemage_EXTERNAL_OBJECTS =
 
 wavemage.exe: CMakeFiles/wavemage.dir/main.cpp.obj
+wavemage.exe: CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.obj
+wavemage.exe: CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.obj
+wavemage.exe: CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.obj
+wavemage.exe: CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.obj
+wavemage.exe: CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.obj
+wavemage.exe: CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.obj
+wavemage.exe: CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.obj
 wavemage.exe: CMakeFiles/wavemage.dir/build.make
 wavemage.exe: CMakeFiles/wavemage.dir/linkLibs.rsp
 wavemage.exe: CMakeFiles/wavemage.dir/objects1.rsp
 wavemage.exe: CMakeFiles/wavemage.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\user\proj\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable wavemage.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\user\proj\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable wavemage.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\wavemage.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

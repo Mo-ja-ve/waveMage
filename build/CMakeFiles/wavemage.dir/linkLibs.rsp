@@ -1,1 +1,1 @@
-  -L"C:/Users/user/proj/headers/include/imgui-master"  -LC:/Users/user/proj/lib  -lSDL2main -lSDL2 -lOpenGL32 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+  -LC:/Users/user/proj/lib  -lSDL2main -lSDL2 -lOpenGL32 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

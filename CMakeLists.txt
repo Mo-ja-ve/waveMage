@@ -4,6 +4,7 @@ project (wavemage)
 
 include_directories(C:/Users/user/proj/headers/include/SDL2)
 include_directories(C:/Users/user/proj/headers/include/imgui-master)
+include_directories(C:/Users/user/proj/headers/include/implot-master)
 include_directories(C:/Users/user/proj/headers/include/imgui-master/backends)
 
 link_directories(C:/Users/user/proj/lib)

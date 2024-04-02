@@ -147,6 +147,7 @@ CMakeFiles/wavemage.dir/main.cpp.obj: C:\Users\user\proj\main.cpp \
  C:/msys64/ucrt64/include/assert.h \
  C:/Users/user/proj/headers/include/imgui-master/backends/imgui_impl_sdl2.h \
  C:/Users/user/proj/headers/include/imgui-master/backends/imgui_impl_opengl2.h \
+ C:/Users/user/proj/headers/include/implot-master/implot.h \
  C:/Users/user/proj/headers/include/SDL2/SDL.h \
  C:/Users/user/proj/headers/include/SDL2/SDL_main.h \
  C:/Users/user/proj/headers/include/SDL2/SDL_stdinc.h \

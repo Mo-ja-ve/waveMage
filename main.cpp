@@ -6,6 +6,7 @@
 #endif  
 #include "imgui_impl_sdl2.h"
 #include "imgui_impl_opengl2.h"
+#include "implot.h"
 #include <stdio.h>
 #include <SDL.h>
 #include <SDL_opengl.h>
@@ -38,6 +39,8 @@ int main(int argc, char* argv[]) {
         printf("Error: %s\n", SDL_GetError());
         return -1;
     }
+
+    ImPlotPoint SineWave(int idx, void* wave_data);
 
     // From 2.0.18: Enable native IME.
 #ifdef SDL_HINT_IME_SHOW_UI

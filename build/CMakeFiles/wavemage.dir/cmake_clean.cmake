@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.obj.d"
   "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.obj"
   "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.obj.d"
+  "CMakeFiles/wavemage.dir/headers/include/raudio/raudio.c.obj"
+  "CMakeFiles/wavemage.dir/headers/include/raudio/raudio.c.obj.d"
   "CMakeFiles/wavemage.dir/main.cpp.obj"
   "CMakeFiles/wavemage.dir/main.cpp.obj.d"
   "libwavemage.dll.a"
@@ -22,6 +24,6 @@ file(REMOVE_RECURSE
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang CXX)
+foreach(lang C CXX)
   include(CMakeFiles/wavemage.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()

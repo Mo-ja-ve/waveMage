@@ -1239,6 +1239,7 @@ CMakeFiles/wavemage.dir/main.cpp.obj: C:/Users/user/proj/main.cpp \
   C:/Users/user/proj/headers/include/imgui-master/imconfig.h \
   C:/Users/user/proj/headers/include/imgui-master/imgui.h \
   C:/Users/user/proj/headers/include/implot-master/implot.h \
+  C:/Users/user/proj/headers/include/raudio/raudio.h \
   C:/msys64/ucrt64/include/_mingw.h \
   C:/msys64/ucrt64/include/_mingw_mac.h \
   C:/msys64/ucrt64/include/_mingw_off_t.h \
@@ -2264,6 +2265,8 @@ C:/msys64/ucrt64/include/c++/13.2.0/tr1/beta_function.tcc:
 C:/msys64/ucrt64/include/c++/13.2.0/bits/ostream_insert.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/tr1/ell_integral.tcc:
+
+C:/Users/user/proj/headers/include/raudio/raudio.h:
 
 C:/msys64/ucrt64/include/c++/13.2.0/tr1/exp_integral.tcc:
 

@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <SDL.h>
 #include <SDL_opengl.h>
+#include "miniaudio.h"
+#include "raudio.h"
 
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
@@ -20,20 +22,13 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 
-    //    cout<<"WAVE MAGE"<<endl;
-    //    if(SDL_Init(SDL_INIT_VIDEO) < 0){
-    //           printf("Error: SDL failed to initialize\nSDL Error: '%s'\n", SDL_GetError());
-    //           return 1;
-    //    }
+    ma_result result;
+    ma_device_config deviceConfig = ma_device_config_init(ma_device_type_capture);
+    deviceConfig.capture.format = ma_format_s16;  // Example: Use 16-bit signed PCM format
+    deviceConfig.capture.channels = 1;            // Example: Mono audio
+    deviceConfig.sampleRate = 44100;              // Example: Sample rate of 44100 Hz
+    //deviceConfig.dataCallback = dataCallback;
 
-    // // Create a window
-    // SDL_Window* window = SDL_CreateWindow("WAVE MAGE", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
-    // if (window == nullptr) {
-    //     std::cerr << "Window creation failed: " << SDL_GetError() << std::endl;
-    //     SDL_Quit();
-    //     return 1;
-    // }
-       // Setup SDL
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0)
     {
         printf("Error: %s\n", SDL_GetError());

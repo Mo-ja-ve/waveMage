@@ -359,4 +359,6 @@ CMakeFiles/wavemage.dir/main.cpp.obj: C:\Users\user\proj\main.cpp \
  C:/msys64/ucrt64/include/sec_api/stralign_s.h \
  C:/msys64/ucrt64/include/winsvc.h C:/msys64/ucrt64/include/mcx.h \
  C:/msys64/ucrt64/include/imm.h \
- C:/Users/user/proj/headers/include/SDL2/SDL_opengl_glext.h
+ C:/Users/user/proj/headers/include/SDL2/SDL_opengl_glext.h \
+ C:/Users/user/proj/headers/include/raudio/external/miniaudio.h \
+ C:/Users/user/proj/headers/include/raudio/raudio.h

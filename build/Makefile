@@ -296,6 +296,30 @@ headers/include/imgui-master/imgui_widgets.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.s
 .PHONY : headers/include/imgui-master/imgui_widgets.cpp.s
 
+headers/include/raudio/raudio.obj: headers/include/raudio/raudio.c.obj
+.PHONY : headers/include/raudio/raudio.obj
+
+# target to build an object file
+headers/include/raudio/raudio.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/raudio/raudio.c.obj
+.PHONY : headers/include/raudio/raudio.c.obj
+
+headers/include/raudio/raudio.i: headers/include/raudio/raudio.c.i
+.PHONY : headers/include/raudio/raudio.i
+
+# target to preprocess a source file
+headers/include/raudio/raudio.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/raudio/raudio.c.i
+.PHONY : headers/include/raudio/raudio.c.i
+
+headers/include/raudio/raudio.s: headers/include/raudio/raudio.c.s
+.PHONY : headers/include/raudio/raudio.s
+
+# target to generate assembly for a file
+headers/include/raudio/raudio.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wavemage.dir\build.make CMakeFiles/wavemage.dir/headers/include/raudio/raudio.c.s
+.PHONY : headers/include/raudio/raudio.c.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -350,6 +374,9 @@ help:
 	@echo ... headers/include/imgui-master/imgui_widgets.obj
 	@echo ... headers/include/imgui-master/imgui_widgets.i
 	@echo ... headers/include/imgui-master/imgui_widgets.s
+	@echo ... headers/include/raudio/raudio.obj
+	@echo ... headers/include/raudio/raudio.i
+	@echo ... headers/include/raudio/raudio.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

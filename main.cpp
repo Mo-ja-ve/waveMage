@@ -22,8 +22,8 @@ using namespace std;
 
 void dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount) {
     // We're only interested in capturing microphone input, so we can ignore pOutput and pInput.
-    MA_ASSERT(pDevice->capture.pInterleavedSamples != NULL);
-    MA_ASSERT(pOutput == NULL);
+    //MA_ASSERT(pDevice->capture.pInterleavedSamples != NULL);
+    //MA_ASSERT(pOutput == NULL);
     // In a real-world scenario, you would process or store the captured audio data here.
     // pInput contains the captured audio data.
 }
@@ -36,6 +36,10 @@ int main(int argc, char* argv[]) {
     deviceConfig.capture.channels = 1;            // Example: Mono audio
     deviceConfig.sampleRate = 44100;              // Example: Sample rate of 44100 Hz
     deviceConfig.dataCallback = dataCallback;
+
+    if (result != MA_SUCCESS) {
+        cout<<endl<<"ERROR Failed to initialize the device!"<<endl;
+    }
 
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0)
     {

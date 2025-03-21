@@ -8,15 +8,15 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/user/proj/headers/include/raudio/raudio.c" "CMakeFiles/wavemage.dir/headers/include/raudio/raudio.c.obj" "gcc" "CMakeFiles/wavemage.dir/headers/include/raudio/raudio.c.obj.d"
-  "C:/Users/user/proj/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp" "CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.obj" "gcc" "CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.obj.d"
-  "C:/Users/user/proj/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp" "CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.obj" "gcc" "CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.obj.d"
-  "C:/Users/user/proj/headers/include/imgui-master/imgui.cpp" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.obj" "gcc" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.obj.d"
-  "C:/Users/user/proj/headers/include/imgui-master/imgui_demo.cpp" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.obj" "gcc" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.obj.d"
-  "C:/Users/user/proj/headers/include/imgui-master/imgui_draw.cpp" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.obj" "gcc" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.obj.d"
-  "C:/Users/user/proj/headers/include/imgui-master/imgui_tables.cpp" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.obj" "gcc" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.obj.d"
-  "C:/Users/user/proj/headers/include/imgui-master/imgui_widgets.cpp" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.obj" "gcc" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.obj.d"
-  "C:/Users/user/proj/main.cpp" "CMakeFiles/wavemage.dir/main.cpp.obj" "gcc" "CMakeFiles/wavemage.dir/main.cpp.obj.d"
+  "C:/Users/USER/proj/headers/include/raudio/raudio.c" "CMakeFiles/wavemage.dir/headers/include/raudio/raudio.c.obj" "gcc" "CMakeFiles/wavemage.dir/headers/include/raudio/raudio.c.obj.d"
+  "C:/Users/USER/proj/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp" "CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.obj" "gcc" "CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp.obj.d"
+  "C:/Users/USER/proj/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp" "CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.obj" "gcc" "CMakeFiles/wavemage.dir/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp.obj.d"
+  "C:/Users/USER/proj/headers/include/imgui-master/imgui.cpp" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.obj" "gcc" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui.cpp.obj.d"
+  "C:/Users/USER/proj/headers/include/imgui-master/imgui_demo.cpp" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.obj" "gcc" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_demo.cpp.obj.d"
+  "C:/Users/USER/proj/headers/include/imgui-master/imgui_draw.cpp" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.obj" "gcc" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_draw.cpp.obj.d"
+  "C:/Users/USER/proj/headers/include/imgui-master/imgui_tables.cpp" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.obj" "gcc" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_tables.cpp.obj.d"
+  "C:/Users/USER/proj/headers/include/imgui-master/imgui_widgets.cpp" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.obj" "gcc" "CMakeFiles/wavemage.dir/headers/include/imgui-master/imgui_widgets.cpp.obj.d"
+  "C:/Users/USER/proj/main.cpp" "CMakeFiles/wavemage.dir/main.cpp.obj" "gcc" "CMakeFiles/wavemage.dir/main.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

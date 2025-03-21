@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <iostream>
+#include <stdio.h>
 #ifndef IMGUI_H
 #define IMGUI_H
 #include "imgui.h"
@@ -7,7 +7,6 @@
 #include "imgui_impl_sdl2.h"
 #include "imgui_impl_opengl2.h"
 #include "implot.h"
-#include <stdio.h>
 #include <SDL.h>
 #include <SDL_opengl.h>
 #include "miniaudio.h"
@@ -31,16 +30,18 @@ void dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint
 int main(int argc, char* argv[]) {
 
     ma_result result;
+    ma_device device;
     ma_device_config deviceConfig = ma_device_config_init(ma_device_type_capture);
     deviceConfig.capture.format = ma_format_s16;  // Example: Use 16-bit signed PCM format
     deviceConfig.capture.channels = 1;            // Example: Mono audio
     deviceConfig.sampleRate = 44100;              // Example: Sample rate of 44100 Hz
     deviceConfig.dataCallback = dataCallback;
 
-    if (result != MA_SUCCESS) {
-        cout<<endl<<"ERROR Failed to initialize the device!"<<endl;
+    if(ma_device_init(NULL, &deviceConfig, &device) != MA_SUCCESS){
+        std::cout<<endl<<"error!";
     }
-
+    ma_device_start(&device);
+    
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0)
     {
         printf("Error: %s\n", SDL_GetError());

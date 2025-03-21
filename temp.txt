@@ -1,0 +1,52 @@
+cmake_minimum_required(VERSION 3.10)  # Minimum version of CMake required
+
+message(STATUS "CMAKE_MODULE_PATH is set to: ${CMAKE_MODULE_PATH}")
+
+set(CMAKE_C_COMPILER "C:/MinGW/bin/gcc.exe")
+set(CMAKE_CXX_COMPILER "C:/MinGW/bin/g++.exe")
+
+project (wavemage)
+
+include_directories(C:/Users/USER/proj/headers/include/SDL2)
+include_directories(C:/Users/user/proj/headers/include/imgui-master)
+include_directories(C:/Users/user/proj/headers/include/implot-master)
+include_directories(C:/Users/user/proj/headers/include/imgui-master/backends)
+include_directories(C:/Users/user/proj/headers/include/raudio)
+include_directories(C:/Users/user/proj/headers/include/raudio/external)
+
+
+link_directories(C:/Users/user/proj/lib)
+
+set(CMAKE_PREFIX_PATH "C:/Users/user/proj/headers/lib/cmake/SDL2")
+set(SDL2_DIR "C:/Users/USER/Desktop/zipTemp/cmake-3.27.0-rc3/cmake-3.27.0-rc3/Tests/FindSDL")
+
+find_package(SDL2 REQUIRED)
+
+# Check if SDL2 was found
+if(NOT SDL2_FOUND)
+message(FATAL_ERROR "SDL2 was not found!")
+endif()
+
+file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/headers/include/raudio/external/miniaudio.h
+${CMAKE_CURRENT_SOURCE_DIR}/headers/include/raudio/raudio.h
+${CMAKE_CURRENT_SOURCE_DIR}/headers/include/raudio/raudio.c
+${CMAKE_CURRENT_SOURCE_DIR}/headers/include/imgui-master/*.h 
+${CMAKE_CURRENT_SOURCE_DIR}/headers/include/imgui-master/*.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/headers/include/imgui-master/backends/imgui_impl_sdl2.h
+${CMAKE_CURRENT_SOURCE_DIR}/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp
+${CMAKE_CURRENT_SOURCE_DIR}/headers/include/imgui-master/backends/imgui_impl_opengl2.h
+${CMAKE_CURRENT_SOURCE_DIR}/headers/include/imgui-master/backends/imgui_impl_opengl2.cpp)
+
+set(WAVEMAGE_SRCS main.cpp ${SOURCES})
+
+add_executable(${PROJECT_NAME} ${WAVEMAGE_SRCS})
+
+target_link_libraries(${PROJECT_NAME} "C:/Users/USER/proj/lib/SDL2.lib" SDL2main SDL2 OpenGL32)
+
+if(WIN32)
+    #set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "-mconsole")
+    message("Windows Detected")
+    message("Building For Windows...")
+else()
+    set(WAVEMAGE_SRCS ${WAVEMAGE_SRCS} UnixSupport.c)
+endif()

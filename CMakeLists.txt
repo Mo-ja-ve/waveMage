@@ -1,6 +1,17 @@
+#specify MinGW Makefile usage instead of default MSVC
+#cmake ../ -G "MinGW Makefiles"
+
+#build exe but clean first
+#cmake --build . --clean-first
+
 cmake_minimum_required(VERSION 3.10)  # Minimum version of CMake required
 
 project (wavemage)
+
+set(CMAKE_C_COMPILER "C:/mingw64/bin/gcc.exe")
+set(CMAKE_CXX_COMPILER "C:/mingw64/bin/g++.exe")
+
+add_compile_options(-m64)
 
 include_directories(C:/Users/user/proj/headers/include/SDL2)
 include_directories(C:/Users/user/proj/headers/include/imgui-master)
@@ -27,9 +38,11 @@ file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/headers/include/raudio/external/mi
 
 set(WAVEMAGE_SRCS main.cpp ${SOURCES})
 
+set(CMAKE_EXE_LINKER_FLAGS "--static -static-libgcc -static-libstdc++")  #static linking
+
 add_executable(${PROJECT_NAME} ${WAVEMAGE_SRCS})
 
-target_link_libraries(${PROJECT_NAME} SDL2main SDL2 OpenGL32 )
+target_link_libraries(${PROJECT_NAME} SDL2main SDL2 OpenGL32)
 
 if(WIN32)
     #set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "-mconsole")
@@ -37,4 +50,4 @@ if(WIN32)
     message("Building For Windows...")
 else()
     set(WAVEMAGE_SRCS ${WAVEMAGE_SRCS} UnixSupport.c)
-endif()
+endif() 

@@ -1,3 +1,0 @@
-C:/Users/USER/proj/build/CMakeFiles/wavemage.dir
-C:/Users/USER/proj/build/CMakeFiles/edit_cache.dir
-C:/Users/USER/proj/build/CMakeFiles/rebuild_cache.dir

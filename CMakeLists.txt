@@ -17,8 +17,10 @@ include_directories(C:/Users/user/proj/headers/include/SDL2)
 include_directories(C:/Users/user/proj/headers/include/imgui-master)
 include_directories(C:/Users/user/proj/headers/include/implot-master)
 include_directories(C:/Users/user/proj/headers/include/imgui-master/backends)
-include_directories(C:/Users/user/proj/headers/include/raudio)
-include_directories(C:/Users/user/proj/headers/include/raudio/external)
+include_directories(C:/Users/USER/proj/headers/include/ma)
+
+#include_directories(C:/Users/user/proj/headers/include/raudio)
+#include_directories(C:/Users/user/proj/headers/include/raudio/external)
 
 link_directories(C:/Users/user/proj/lib)
 
@@ -26,9 +28,11 @@ set(CMAKE_PREFIX_PATH "C:/Users/user/proj/headers/lib/cmake/SDL2")
 
 find_package(SDL2 REQUIRED)
 
-file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/headers/include/raudio/external/miniaudio.h
-                  ${CMAKE_CURRENT_SOURCE_DIR}/headers/include/raudio/raudio.h
-                  ${CMAKE_CURRENT_SOURCE_DIR}/headers/include/raudio/raudio.c
+file(GLOB SOURCES 
+                 #${CMAKE_CURRENT_SOURCE_DIR}/headers/include/raudio/external/miniaudio.h
+                  ${CMAKE_CURRENT_SOURCE_DIR}headers/include/ma/miniaudio.h
+                 #${CMAKE_CURRENT_SOURCE_DIR}/headers/include/raudio/raudio.h
+                 #${CMAKE_CURRENT_SOURCE_DIR}/headers/include/raudio/raudio.c
                   ${CMAKE_CURRENT_SOURCE_DIR}/headers/include/imgui-master/*.h 
                   ${CMAKE_CURRENT_SOURCE_DIR}/headers/include/imgui-master/*.cpp
                   ${CMAKE_CURRENT_SOURCE_DIR}/headers/include/imgui-master/backends/imgui_impl_sdl2.h

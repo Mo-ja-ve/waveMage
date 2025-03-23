@@ -9,8 +9,10 @@
 #include "implot.h"
 #include <SDL.h>
 #include <SDL_opengl.h>
+
+#define MINIAUDIO_IMPLEMENTATION
 #include "miniaudio.h"
-#include "raudio.h"
+//#include "raudio.h"
 
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
@@ -25,23 +27,90 @@ void dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint
     //MA_ASSERT(pOutput == NULL);
     // In a real-world scenario, you would process or store the captured audio data here.
     // pInput contains the captured audio data.
+    ma_encoder_write_pcm_frames((ma_encoder*)pDevice->pUserData, pInput, frameCount, NULL);
+
+    (void)pOutput;
 }
+
 
 int main(int argc, char* argv[]) {
 
     ma_result result;
     ma_device device;
-    ma_device_config deviceConfig = ma_device_config_init(ma_device_type_capture);
-    deviceConfig.capture.format = ma_format_s16;  // Example: Use 16-bit signed PCM format
-    deviceConfig.capture.channels = 1;            // Example: Mono audio
-    deviceConfig.sampleRate = 44100;              // Example: Sample rate of 44100 Hz
-    deviceConfig.dataCallback = dataCallback;
+    ma_context context; 
 
-    if(ma_device_init(NULL, &deviceConfig, &device) != MA_SUCCESS){
-        std::cout<<endl<<"error!";
+    ma_device_info* pPlaybackInfos;
+    ma_uint32 playbackCount;
+    ma_device_info* pCaptureInfos;
+    ma_uint32 captureCount;
+
+    ma_encoder_config encoderConfig;
+    ma_encoder encoder;
+
+    // FILE* pFile = fopen("test.wav", "r+");
+    // if (pFile == NULL) {
+    //     perror("Error opening file"); // Prints a descriptive error message
+    // }
+
+    encoderConfig = ma_encoder_config_init(ma_encoding_format_wav, ma_format_f32, 2, 44100);
+    
+    //char filename[] = "test.wav";
+    result = ma_encoder_init_file(argv[1], &encoderConfig, &encoder);
+    if( result != MA_SUCCESS){
+        std::cerr << "ERROR: " << ma_result_description(result) << " (Code: " << result << ")" << std::endl;
+    }
+
+    // if (ma_encoder_init_file(filename, &encoderConfig, &encoder) != MA_SUCCESS) {
+    //     result = ma_encoder_init_file(filename, &encoderConfig, &encoder);
+    //     std::cout<<endl<<"result: "<<result;
+    //     printf("Failed to initialize output file.\n");
+    //     return -1;
+    // }  
+    
+    ma_device_config deviceConfig = ma_device_config_init(ma_device_type_capture);
+    deviceConfig.capture.format   = encoder.config.format;
+    deviceConfig.capture.channels = encoder.config.channels;
+    deviceConfig.sampleRate       = encoder.config.sampleRate;
+    deviceConfig.dataCallback     = dataCallback;
+    deviceConfig.pUserData        = &encoder;
+
+
+    if (ma_context_init(NULL, 0, NULL, &context) != MA_SUCCESS) {
+        std::cout<<endl<<"error! failed to init ma context!";
+    }
+    
+
+    if (ma_context_get_devices(&context, &pPlaybackInfos, &playbackCount, &pCaptureInfos, &captureCount) != MA_SUCCESS) {
+        std::cout<<endl<<"error! failed to enumerate devices!";
+    }
+
+    // Loop over each device info and do something with it. Here we just print the name with their index. You may want
+    // to give the user the opportunity to choose which device they'd prefer.
+    for (ma_uint32 iDevice = 0; iDevice < playbackCount; iDevice += 1) {
+        printf("%d - %s\n", iDevice, pPlaybackInfos[iDevice].name);
+    }
+
+    cout<<endl<<"deviceConfig.capture.pDeviceID: "<<deviceConfig.capture.pDeviceID;
+    cout<<endl;
+
+    result = ma_device_init(NULL, &deviceConfig, &device);
+    if(result != MA_SUCCESS){
+        std::cerr << "Error: " << ma_result_description(result) << " (Code: " << result << ")" << std::endl;
     }
     ma_device_start(&device);
+
+
+    cout<<endl<<"context.backend: "<<context.backend;
+    cout<<endl<<"context.backend: "<<context.backend;
+    cout<<endl<<"context.backend: "<<context.backend;
     
+
+    printf("Press Enter to stop recording...\n");
+    getchar();
+    
+    ma_device_uninit(&device);
+    ma_encoder_uninit(&encoder);
+
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0)
     {
         printf("Error: %s\n", SDL_GetError());
@@ -53,7 +122,7 @@ int main(int argc, char* argv[]) {
     // From 2.0.18: Enable native IME.
 #ifdef SDL_HINT_IME_SHOW_UI
     SDL_SetHint(SDL_HINT_IME_SHOW_UI, "1");
-#endif
+#endif  
 
     // Setup window
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);

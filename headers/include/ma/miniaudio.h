@@ -3496,7 +3496,7 @@ If you initialize the buffer with `ma_audio_buffer_alloc_and_init()` you should 
 with `ma_audio_buffer_uninit_and_free()`. In the example above, the memory pointed to by
 `pExistingData` will be copied into the buffer, which is contrary to the behavior of
 `ma_audio_buffer_init()`.
-
+    
 An audio buffer has a playback cursor just like a decoder. As you read frames from the buffer, the
 cursor moves forward. The last parameter (`loop`) can be used to determine if the buffer should
 loop. The return value is the number of frames actually read. If this is less than the number of

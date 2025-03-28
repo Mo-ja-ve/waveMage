@@ -4561,7 +4561,7 @@ MA_API ma_uint32 ma_biquad_get_latency(const ma_biquad* pBQ);
 Low-Pass Filtering
 
 **************************************************************************************************************************************************************/
-typedef struct
+typedef structDD
 {
     ma_format format;
     ma_uint32 channels;

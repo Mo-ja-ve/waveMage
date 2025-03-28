@@ -1,6 +1,12 @@
 {
     "files.associations": {
         "iostream": "cpp",
-        "miniaudio.h": "c"
+        "miniaudio.h": "c",
+        "vector": "cpp",
+        "xutility": "cpp",
+        "iterator": "cpp",
+        "xhash": "cpp",
+        "xstring": "cpp",
+        "ostream": "cpp"
     }
 }

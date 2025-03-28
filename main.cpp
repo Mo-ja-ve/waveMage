@@ -42,21 +42,9 @@ void dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint
     // We're only interested in capturing microphone input, so we can ignore pOutput and pInput.
     //MA_ASSERT(pDevice->capture.pInterleavedSamples != NULL);
     //MA_ASSERT(pOutput == NULL);
-    // In a real-world scenario, you would process or store the captured audio data here.
+    // In a real-world scenario, you would process or store the captured audio data here.   
     // pInput contains the captured audio data.
     ma_encoder_write_pcm_frames((ma_encoder*)pDevice->pUserData, pInput, frameCount, NULL);
-    
-    //stereo_frame* tempBuff = (stereo_frame *)pInput;
-    
-    if(vecFrames.size() + 441 < vecFrames.capacity()){
-        //copy(&tempBuff[0], &tempBuff[frameCount], back_inserter(vecFrames));
-        copy(&(*(stereo_frame*)pInput), &(*(stereo_frame*)(pInput + frameCount)), back_inserter(vecFrames));
-    }else{
-        for(int i = 0; i < vecFrames.size(); i++){   
-            std::cout<<std::endl<<"vecFrames: "<<vecFrames[i].left;
-            std::cout<<std::endl<<"vecFrames: "<<vecFrames[i].right;
-        }
-    }
     
     //std::cout<<endl<<"1 frameCount: "<<frameCount;
     
@@ -76,8 +64,29 @@ void duplex_dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, 
                 //         std::cout<<std::endl<<"vecFrames: "<<vecFrames[i].right;
                 //     }
                 // } 
+                //stereo_frame* tempBuff = (stereo_frame *)pInput;
+
+    
+        /* This example assumes the playback and capture sides use the same format and channel count. */
+    if (pDevice->capture.format != pDevice->playback.format || pDevice->capture.channels != pDevice->playback.channels) {
+        return;
+    }
+
+    /* In this example the format and channel count are the same for both input and output which means we can just memcpy(). */
+    MA_COPY_MEMORY(pOutput, pInput, frameCount * ma_get_bytes_per_frame(pDevice->capture.format, pDevice->capture.channels));
+    
+    if(vecFrames.size() + 441 < vecFrames.capacity()){
+        //copy(&tempBuff[0], &tempBuff[frameCount], back_inserter(vecFrames));
+                                                        // this might not give you the right address 
+        copy(&(*(stereo_frame*)pInput), &(*(stereo_frame*)(pInput + frameCount)), back_inserter(vecFrames));
+    }else{
+        // for(int i = 0; i < vecFrames.size(); i++){ 
+        //     std::cout<<std::endl<<"vecFrames: "<<vecFrames[i].left;
+        //     std::cout<<std::endl<<"vecFrames: "<<vecFrames[i].right;
+        // }
+    }
+                
 }
-            
             
             
 int main(int argc, char* argv[]) {
@@ -93,12 +102,12 @@ int main(int argc, char* argv[]) {
     
     ma_encoder_config encoderConfig;
     ma_encoder encoder;
+    ma_audio_buffer* pBuffer;
     
     vecFrames.reserve(4800);
 
-    ma_audio_buffer_config config = ma_audio_buffer_config_init( ma_format_f32, 2, (ma_uint64)(441), NULL, NULL);
+    ma_audio_buffer_config config = ma_audio_buffer_config_init( ma_format_f32, 2, vecFrames.capacity(), NULL, NULL);
 
-    ma_audio_buffer* pBuffer;
     result = ma_audio_buffer_alloc_and_init(&config, &pBuffer);
     if (result != MA_SUCCESS) {
         // Error
@@ -111,22 +120,6 @@ int main(int argc, char* argv[]) {
     if( result != MA_SUCCESS){
         std::cerr << "ERROR: " << ma_result_description(result) << " (Code: " << result << ")" << std::endl;
     }
-    
-    ma_device_config deviceConfig = ma_device_config_init(ma_device_type_capture);
-    deviceConfig.capture.format   = encoder.config.format;
-    deviceConfig.capture.channels = encoder.config.channels;
-    deviceConfig.sampleRate       = encoder.config.sampleRate;
-    deviceConfig.dataCallback     = dataCallback;
-    deviceConfig.pUserData        = &encoder;
-
-
-    // ma_device_config duplex_deviceConfig = ma_device_config_init(ma_device_type_duplex);
-    // duplex_deviceConfig.capture.format   = ma_format_f32;
-    // duplex_deviceConfig.capture.channels = 2;
-    // duplex_deviceConfig.sampleRate       = 44100;
-    // duplex_deviceConfig.dataCallback     = duplex_dataCallback;
-    // duplex_deviceConfig.pUserData        = &pBuffer;
-
 
     if (ma_context_init(NULL, 0, NULL, &context) != MA_SUCCESS) {
         std::cout<<std::endl<<"error! failed to init ma context!";
@@ -139,28 +132,56 @@ int main(int argc, char* argv[]) {
     for (ma_uint32 iDevice = 0; iDevice < playbackCount; iDevice += 1) {
         printf("%d - %s\n", iDevice, pPlaybackInfos[iDevice].name);
     }
+    
+    ma_device_config deviceConfig = ma_device_config_init(ma_device_type_capture);
+    deviceConfig.capture.format   = encoder.config.format;
+    deviceConfig.capture.channels = encoder.config.channels;
+    deviceConfig.sampleRate       = encoder.config.sampleRate;
+    deviceConfig.dataCallback     = dataCallback;
+    deviceConfig.pUserData        = &encoder;
+    
+    // for (ma_uint32 iDevice = 0; iDevice < playbackCount; iDevice += 1) {
+    //     printf("%d - %s\n", iDevice, pPlaybackInfos[iDevice].name);
+    // }
+
+    ma_device_config duplex_deviceConfig = ma_device_config_init(ma_device_type_duplex);
+    duplex_deviceConfig.playback.pDeviceID = NULL;
+    duplex_deviceConfig.capture.format   = ma_format_f32;
+    duplex_deviceConfig.capture.channels = 2;
+    duplex_deviceConfig.playback.format   = ma_format_f32;
+    duplex_deviceConfig.playback.channels = 2; 
+    duplex_deviceConfig.sampleRate       = 44100;
+    duplex_deviceConfig.dataCallback     = duplex_dataCallback;
+    //duplex_deviceConfig.pUserData        = &pBuffer;
+    
     std::cout<<std::endl<<"deviceConfig.capture.pDeviceID: "<<deviceConfig.capture.pDeviceID<<std::endl;
+    std::cout<<std::endl<<"duplex_deviceConfig.capture.pDeviceID: "<<duplex_deviceConfig.capture.pDeviceID<<std::endl;
+    std::cout<<std::endl<<"duplex_deviceConfig.playback.pDeviceID: "<<duplex_deviceConfig.playback.pDeviceID<<std::endl;
+    
+    
 
     result = ma_device_init(NULL, &deviceConfig, &device);
     if(result != MA_SUCCESS){
         std::cerr << "Error: " << ma_result_description(result) << " (Code: " << result << ")" << std::endl;
     }
-    // result = ma_device_init(NULL, &duplex_deviceConfig, &duplexDevice);
-    // if(result != MA_SUCCESS){
-    //     std::cerr << "Error: " << ma_result_description(result) << " (Code: " << result << ")" << std::endl;
-    // }
+    result = ma_device_init(NULL, &duplex_deviceConfig, &duplexDevice);
+    if(result != MA_SUCCESS){
+        std::cerr << "Error: " << ma_result_description(result) << " (Code: " << result << ")" << std::endl;
+    }
     
-    ma_device_start(&device);
-    //ma_device_start(&duplexDevice);
+    // ma_device_start(&device);
+    ma_device_start(&duplexDevice);
 
     std::cout<<std::endl<<"context.backend: "<<context.backend;
-   
 
     printf("Press Enter to stop recording...\n");
     getchar();
     
-    ma_device_uninit(&device);
-    ma_encoder_uninit(&encoder);
+    // ma_device_uninit(&device);
+    // ma_encoder_uninit(&encoder);
+
+    ma_device_uninit(&duplexDevice);
+    ma_audio_buffer_uninit(pBuffer);
 
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0)
     {

@@ -46,10 +46,11 @@ void dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint
     // pInput contains the captured audio data.
     ma_encoder_write_pcm_frames((ma_encoder*)pDevice->pUserData, pInput, frameCount, NULL);
     
-    stereo_frame* tempBuff = (stereo_frame *)pInput;
+    //stereo_frame* tempBuff = (stereo_frame *)pInput;
     
     if(vecFrames.size() + 441 < vecFrames.capacity()){
-        copy(&tempBuff[0], &tempBuff[frameCount], back_inserter(vecFrames));
+        //copy(&tempBuff[0], &tempBuff[frameCount], back_inserter(vecFrames));
+        copy(&(*(stereo_frame*)pInput), &(*(stereo_frame*)(pInput + frameCount)), back_inserter(vecFrames));
     }else{
         for(int i = 0; i < vecFrames.size(); i++){   
             std::cout<<std::endl<<"vecFrames: "<<vecFrames[i].left;

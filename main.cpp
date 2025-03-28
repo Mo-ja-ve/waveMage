@@ -9,6 +9,7 @@
 #include "implot.h"
 #include <SDL.h>
 #include <SDL_opengl.h>
+#include <vector>
 
 #define MINIAUDIO_IMPLEMENTATION
 #include "miniaudio.h"
@@ -19,7 +20,23 @@
 
 const float PI = 3.141593;
 
-using namespace std;
+typedef struct {//  our sound file has a right and left channel (Stereophonic sound)
+	float left;
+	float right;
+} stereo_frame;
+
+std::vector<int> v;
+
+std::vector<stereo_frame> vecFrames;
+
+// 3340
+// line 
+// 13. Audio Buffers
+// =================
+// miniaudio supports reading from a buffer of raw audio data via the `ma_audio_buffer` API. This can
+// read from memory that's managed by the application, but can also handle the memory management for
+// you internally. Memory management is flexible and should support most use cases.
+
 
 void dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount) {
     // We're only interested in capturing microphone input, so we can ignore pOutput and pInput.
@@ -28,29 +45,63 @@ void dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint
     // In a real-world scenario, you would process or store the captured audio data here.
     // pInput contains the captured audio data.
     ma_encoder_write_pcm_frames((ma_encoder*)pDevice->pUserData, pInput, frameCount, NULL);
-
+    
+    stereo_frame* tempBuff = (stereo_frame *)pInput;
+    
+    if(vecFrames.size() + 441 < vecFrames.capacity()){
+        copy(&tempBuff[0], &tempBuff[frameCount], back_inserter(vecFrames));
+    }else{
+        for(int i = 0; i < vecFrames.size(); i++){   
+            std::cout<<std::endl<<"vecFrames: "<<vecFrames[i].left;
+            std::cout<<std::endl<<"vecFrames: "<<vecFrames[i].right;
+        }
+    }
+    
+    //std::cout<<endl<<"1 frameCount: "<<frameCount;
+    
     (void)pOutput;
 }
 
-
+void duplex_dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount) {
+    
+    //std::cout<<std::endl<<"2 frameCount: "<<frameCount;
+    //stereo_frame* tempBuff = (stereo_frame *)pInput;
+    
+    // if(vecFrames.size() < vecFrames.capacity()){
+        //     copy(&tempBuff[0], &tempBuff[frameCount], back_inserter(vecFrames));
+        // }else{
+            //     for(int i = 0; i < vecFrames.size(); i++){   
+                //         std::cout<<std::endl<<"vecFrames: "<<vecFrames[i].left;
+                //         std::cout<<std::endl<<"vecFrames: "<<vecFrames[i].right;
+                //     }
+                // } 
+}
+            
+            
+            
 int main(int argc, char* argv[]) {
-
+                
     ma_result result;
-    ma_device device;
+    ma_device device, duplexDevice;
     ma_context context; 
-
+    
     ma_device_info* pPlaybackInfos;
     ma_uint32 playbackCount;
     ma_device_info* pCaptureInfos;
     ma_uint32 captureCount;
-
+    
     ma_encoder_config encoderConfig;
     ma_encoder encoder;
+    
+    vecFrames.reserve(4800);
 
-    // FILE* pFile = fopen("test.wav", "r+");
-    // if (pFile == NULL) {
-    //     perror("Error opening file"); // Prints a descriptive error message
-    // }
+    ma_audio_buffer_config config = ma_audio_buffer_config_init( ma_format_f32, 2, (ma_uint64)(441), NULL, NULL);
+
+    ma_audio_buffer* pBuffer;
+    result = ma_audio_buffer_alloc_and_init(&config, &pBuffer);
+    if (result != MA_SUCCESS) {
+        // Error
+    }
 
     encoderConfig = ma_encoder_config_init(ma_encoding_format_wav, ma_format_f32, 2, 44100);
     
@@ -59,13 +110,6 @@ int main(int argc, char* argv[]) {
     if( result != MA_SUCCESS){
         std::cerr << "ERROR: " << ma_result_description(result) << " (Code: " << result << ")" << std::endl;
     }
-
-    // if (ma_encoder_init_file(filename, &encoderConfig, &encoder) != MA_SUCCESS) {
-    //     result = ma_encoder_init_file(filename, &encoderConfig, &encoder);
-    //     std::cout<<endl<<"result: "<<result;
-    //     printf("Failed to initialize output file.\n");
-    //     return -1;
-    // }  
     
     ma_device_config deviceConfig = ma_device_config_init(ma_device_type_capture);
     deviceConfig.capture.format   = encoder.config.format;
@@ -75,35 +119,41 @@ int main(int argc, char* argv[]) {
     deviceConfig.pUserData        = &encoder;
 
 
+    // ma_device_config duplex_deviceConfig = ma_device_config_init(ma_device_type_duplex);
+    // duplex_deviceConfig.capture.format   = ma_format_f32;
+    // duplex_deviceConfig.capture.channels = 2;
+    // duplex_deviceConfig.sampleRate       = 44100;
+    // duplex_deviceConfig.dataCallback     = duplex_dataCallback;
+    // duplex_deviceConfig.pUserData        = &pBuffer;
+
+
     if (ma_context_init(NULL, 0, NULL, &context) != MA_SUCCESS) {
-        std::cout<<endl<<"error! failed to init ma context!";
+        std::cout<<std::endl<<"error! failed to init ma context!";
     }
-    
-
     if (ma_context_get_devices(&context, &pPlaybackInfos, &playbackCount, &pCaptureInfos, &captureCount) != MA_SUCCESS) {
-        std::cout<<endl<<"error! failed to enumerate devices!";
+        std::cout<<std::endl<<"error! failed to enumerate devices!";
     }
-
     // Loop over each device info and do something with it. Here we just print the name with their index. You may want
     // to give the user the opportunity to choose which device they'd prefer.
     for (ma_uint32 iDevice = 0; iDevice < playbackCount; iDevice += 1) {
         printf("%d - %s\n", iDevice, pPlaybackInfos[iDevice].name);
     }
-
-    cout<<endl<<"deviceConfig.capture.pDeviceID: "<<deviceConfig.capture.pDeviceID;
-    cout<<endl;
+    std::cout<<std::endl<<"deviceConfig.capture.pDeviceID: "<<deviceConfig.capture.pDeviceID<<std::endl;
 
     result = ma_device_init(NULL, &deviceConfig, &device);
     if(result != MA_SUCCESS){
         std::cerr << "Error: " << ma_result_description(result) << " (Code: " << result << ")" << std::endl;
     }
-    ma_device_start(&device);
-
-
-    cout<<endl<<"context.backend: "<<context.backend;
-    cout<<endl<<"context.backend: "<<context.backend;
-    cout<<endl<<"context.backend: "<<context.backend;
+    // result = ma_device_init(NULL, &duplex_deviceConfig, &duplexDevice);
+    // if(result != MA_SUCCESS){
+    //     std::cerr << "Error: " << ma_result_description(result) << " (Code: " << result << ")" << std::endl;
+    // }
     
+    ma_device_start(&device);
+    //ma_device_start(&duplexDevice);
+
+    std::cout<<std::endl<<"context.backend: "<<context.backend;
+   
 
     printf("Press Enter to stop recording...\n");
     getchar();

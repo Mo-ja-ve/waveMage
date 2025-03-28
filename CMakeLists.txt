@@ -1,5 +1,5 @@
 #specify MinGW Makefile usage instead of default MSVC
-#cmake ../ -G "MinGW Makefiles"
+#cmake -DCMAKE_BUILD_TYPE=Debug ../ -G "MinGW Makefiles"
 
 #build exe but clean first
 #cmake --build . --clean-first

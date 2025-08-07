@@ -204,7 +204,7 @@ void Demo_Help() {
     ImGui::Separator();
     ImGui::Text("USER GUIDE:");
     ShowUserGuide();
-}
+}   
 
 //-----------------------------------------------------------------------------
 

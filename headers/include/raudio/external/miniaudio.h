@@ -17084,7 +17084,7 @@ static ma_result ma_slot_allocator_get_heap_layout(const ma_slot_allocator_confi
 
     if (pConfig->capacity == 0) {
         return MA_INVALID_ARGS;
-    }
+    }   
 
     pHeapLayout->sizeInBytes = 0;
 

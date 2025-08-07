@@ -1,15 +1,16 @@
 #include <iostream>
-#include <stdio.h>
-#ifndef IMGUI_H
-#define IMGUI_H
-#include "imgui.h"
-#endif  
+// #include <stdio.h>
+// #ifndef IMGUI_H
+// #define IMGUI_H
+// #include "imgui.h"
+// #endif  
+#include "implot.h"
 #include "imgui_impl_sdl2.h"
 #include "imgui_impl_opengl2.h"
-#include "implot.h"
 #include <SDL.h>
 #include <SDL_opengl.h>
 #include <vector>
+#include <unistd.h>
 
 #define MINIAUDIO_IMPLEMENTATION
 #include "miniaudio.h"
@@ -19,15 +20,20 @@
 #define SCREEN_HEIGHT 480
 
 const float PI = 3.141593;
+size_t numBuffFrames = 0;
 
 typedef struct {//  our sound file has a right and left channel (Stereophonic sound)
 	float left;
 	float right;
 } stereo_frame;
 
+float	printFrames[4800 * 2] = { 0 };
+
 std::vector<int> v;
 
 std::vector<stereo_frame> vecFrames;
+std::vector<stereo_frame> totalFrames;
+
 
 // 3340
 // line 
@@ -75,23 +81,42 @@ void duplex_dataCallback(ma_device* pDevice, void* pOutput, const void* pInput, 
     /* In this example the format and channel count are the same for both input and output which means we can just memcpy(). */
     MA_COPY_MEMORY(pOutput, pInput, frameCount * ma_get_bytes_per_frame(pDevice->capture.format, pDevice->capture.channels));
     
-    if(vecFrames.size() + 441 < vecFrames.capacity()){
+    if( (numBuffFrames + (size_t)frameCount) < vecFrames.capacity()){
         //copy(&tempBuff[0], &tempBuff[frameCount], back_inserter(vecFrames));
                                                         // this might not give you the right address 
-        copy(&(*(stereo_frame*)pInput), &(*(stereo_frame*)(pInput + frameCount)), back_inserter(vecFrames));
+        //copy(&(*(stereo_frame*)pInput), &(*(stereo_frame*)(pInput + (frameCount*sizeof(stereo_frame)) )), vecFrames.begin() + numBuffFrames );
+        //std::cout<<std::endl<<"vecFrames.capacity(): "<<vecFrames.capacity();
+        //std::cout<<std::endl<<"vecFrames.size() + (size_t)frameCount: "<<vecFrames.size() + (size_t)frameCount;
+        // std::cout<<std::endl<<"vecFrames.size(): "<<vecFrames.size();
+        // std::cout<<std::endl;
+        copy(&(*(stereo_frame*)pInput), &(*(stereo_frame*)(pInput + (frameCount*2*sizeof(float)) )), (vecFrames.begin() + numBuffFrames) );
+        numBuffFrames += (size_t)frameCount;
+        copy(vecFrames.begin(), vecFrames.begin() + numBuffFrames, totalFrames.begin());
+        //std::cout<<std::endl<<"vecFrames.size(): "<<vecFrames.size();
+        //std::cout<<std::endl<<"numBuffFrames: "<<numBuffFrames;
+    }else if(frameCount < vecFrames.capacity()){
+
+        copy(vecFrames.begin() + frameCount, vecFrames.end(), vecFrames.begin());
+        copy(&(*(stereo_frame*)pInput), &(*(stereo_frame*)(pInput + (frameCount*2*sizeof(float)) )), (vecFrames.end() - frameCount));
+
+        copy((vecFrames.end() - frameCount), vecFrames.end(), totalFrames.begin() + numBuffFrames );
+        numBuffFrames += (size_t)frameCount;
     }else{
-        // for(int i = 0; i < vecFrames.size(); i++){ 
-        //     std::cout<<std::endl<<"vecFrames: "<<vecFrames[i].left;
-        //     std::cout<<std::endl<<"vecFrames: "<<vecFrames[i].right;
-        // }
+        //copy(vecFrames.begin() + frameCount, vecFrames.end(), vecFrames.begin());
+        copy(&(*(stereo_frame*)pInput), &(*(stereo_frame*)(pInput + (frameCount*sizeof(stereo_frame)) )), vecFrames.begin() + numBuffFrames );
+        numBuffFrames += (size_t)frameCount;
     }
+    for(int i = 0; i < 9600; i++){
+        printFrames[i] = vecFrames[i].left;
+                //std::cout<<std::endl<<"hello! ";
+    }
+
                 
 }
             
-            
 int main(int argc, char* argv[]) {
                 
-    ma_result result;
+    ma_result result, framesWritten;
     ma_device device, duplexDevice;
     ma_context context; 
     
@@ -102,9 +127,11 @@ int main(int argc, char* argv[]) {
     
     ma_encoder_config encoderConfig;
     ma_encoder encoder;
+    //ma_encoder encoder2;
     ma_audio_buffer* pBuffer;
     
-    vecFrames.reserve(4800);
+    vecFrames.reserve(2*4800);
+    totalFrames.reserve(2'000'000);
 
     ma_audio_buffer_config config = ma_audio_buffer_config_init( ma_format_f32, 2, vecFrames.capacity(), NULL, NULL);
 
@@ -120,6 +147,11 @@ int main(int argc, char* argv[]) {
     if( result != MA_SUCCESS){
         std::cerr << "ERROR: " << ma_result_description(result) << " (Code: " << result << ")" << std::endl;
     }
+
+    // result = ma_encoder_init_file(argv[2], &encoderConfig, &encoder2);
+    // if( result != MA_SUCCESS){
+    //     std::cerr << "ERROR: " << ma_result_description(result) << " (Code: " << result << ")" << std::endl;
+    // }
 
     if (ma_context_init(NULL, 0, NULL, &context) != MA_SUCCESS) {
         std::cout<<std::endl<<"error! failed to init ma context!";
@@ -144,20 +176,19 @@ int main(int argc, char* argv[]) {
     //     printf("%d - %s\n", iDevice, pPlaybackInfos[iDevice].name);
     // }
 
-    ma_device_config duplex_deviceConfig = ma_device_config_init(ma_device_type_duplex);
+    ma_device_config duplex_deviceConfig   = ma_device_config_init(ma_device_type_duplex);
     duplex_deviceConfig.playback.pDeviceID = NULL;
-    duplex_deviceConfig.capture.format   = ma_format_f32;
-    duplex_deviceConfig.capture.channels = 2;
-    duplex_deviceConfig.playback.format   = ma_format_f32;
-    duplex_deviceConfig.playback.channels = 2; 
-    duplex_deviceConfig.sampleRate       = 44100;
-    duplex_deviceConfig.dataCallback     = duplex_dataCallback;
+    duplex_deviceConfig.capture.format     = ma_format_f32;
+    duplex_deviceConfig.capture.channels   = 2;
+    duplex_deviceConfig.playback.format    = ma_format_f32;
+    duplex_deviceConfig.playback.channels  = 2; 
+    duplex_deviceConfig.sampleRate         = 44100;
+    duplex_deviceConfig.dataCallback       = duplex_dataCallback;
     //duplex_deviceConfig.pUserData        = &pBuffer;
     
     std::cout<<std::endl<<"deviceConfig.capture.pDeviceID: "<<deviceConfig.capture.pDeviceID<<std::endl;
     std::cout<<std::endl<<"duplex_deviceConfig.capture.pDeviceID: "<<duplex_deviceConfig.capture.pDeviceID<<std::endl;
     std::cout<<std::endl<<"duplex_deviceConfig.playback.pDeviceID: "<<duplex_deviceConfig.playback.pDeviceID<<std::endl;
-    
     
 
     result = ma_device_init(NULL, &deviceConfig, &device);
@@ -174,14 +205,23 @@ int main(int argc, char* argv[]) {
 
     std::cout<<std::endl<<"context.backend: "<<context.backend;
 
-    printf("Press Enter to stop recording...\n");
-    getchar();
-    
-    // ma_device_uninit(&device);
-    // ma_encoder_uninit(&encoder);
+    // for(int i = 0; i < vecFrames.capacity(); i++){
+    //     std::cout<<vecFrames[i].left<<std::endl;
+    //     std::cout<<vecFrames[i].right<<std::endl;
+    // }
 
-    ma_device_uninit(&duplexDevice);
-    ma_audio_buffer_uninit(pBuffer);
+    // ma_device_uninit(&device);
+    // void *tempVoid;
+    // ma_uint64 framesWritten2;
+    // ma_result result2;
+    // tempVoid = malloc(numBuffFrames*sizeof(stereo_frame));
+    // copy(totalFrames.begin(), totalFrames.begin() + numBuffFrames, &(*(stereo_frame*)tempVoid));
+
+    // std::cout<<"numBuffFrames "<<numBuffFrames<<std::endl;
+    
+    // result2 = ma_encoder_write_pcm_frames(&encoder2, tempVoid, numBuffFrames, &framesWritten2);
+    
+    // ma_encoder_uninit(&encoder2);
 
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0)
     {
@@ -214,9 +254,10 @@ int main(int argc, char* argv[]) {
     SDL_GL_MakeCurrent(window, gl_context);
     SDL_GL_SetSwapInterval(1); // Enable vsync
 
-    // Setup Dear ImGui context
+    // Setup Dear ImGui context 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
+    ImPlot::CreateContext();
     ImGuiIO& io = ImGui::GetIO(); (void)io;
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
@@ -252,6 +293,9 @@ int main(int argc, char* argv[]) {
 
     // Main loop
     bool done = false;
+
+    sleep(1);//sleeps for 3 second
+
     while (!done)
     {
         // Poll and handle events (inputs, window resize, etc.)
@@ -278,6 +322,7 @@ int main(int argc, char* argv[]) {
         if (show_demo_window)
             ImGui::ShowDemoWindow(&show_demo_window);
 
+
         // 2. Show a simple window that we create ourselves. We use a Begin/End pair to create a named window.
         {
             static float f = 0.0f;
@@ -298,6 +343,14 @@ int main(int argc, char* argv[]) {
             ImGui::Text("counter = %d", counter);
 
             ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
+
+            ImPlot::BeginPlot("Audio Wave Form");
+            ImPlot::PlotLine("Wave", printFrames, (4800));
+            ImPlot::EndPlot();
+
+            // printf("Press Enter to stop recording...\n");
+            // getchar();
+            
             ImGui::End();
         }
 
@@ -308,6 +361,7 @@ int main(int argc, char* argv[]) {
             ImGui::Text("Hello from another window!");
             if (ImGui::Button("Close Me"))
                 show_another_window = false;
+
             ImGui::End();
         }
 
@@ -321,10 +375,17 @@ int main(int argc, char* argv[]) {
         SDL_GL_SwapWindow(window);
     }
 
+    printf("Press Enter to stop recording...\n");
+    getchar();
+
+    ma_device_uninit(&duplexDevice);
+    ma_audio_buffer_uninit(pBuffer);
+
     // Cleanup
     ImGui_ImplOpenGL2_Shutdown();
     ImGui_ImplSDL2_Shutdown();
     ImGui::DestroyContext();
+    ImPlot::DestroyContext();
 
     SDL_GL_DeleteContext(gl_context);
     SDL_DestroyWindow(window);

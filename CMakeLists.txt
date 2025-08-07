@@ -35,6 +35,8 @@ file(GLOB SOURCES
                  #${CMAKE_CURRENT_SOURCE_DIR}/headers/include/raudio/raudio.c
                   ${CMAKE_CURRENT_SOURCE_DIR}/headers/include/imgui-master/*.h 
                   ${CMAKE_CURRENT_SOURCE_DIR}/headers/include/imgui-master/*.cpp
+                  ${CMAKE_CURRENT_SOURCE_DIR}/headers/include/implot-master/*.h 
+                  ${CMAKE_CURRENT_SOURCE_DIR}/headers/include/implot-master/*.cpp
                   ${CMAKE_CURRENT_SOURCE_DIR}/headers/include/imgui-master/backends/imgui_impl_sdl2.h
                   ${CMAKE_CURRENT_SOURCE_DIR}/headers/include/imgui-master/backends/imgui_impl_sdl2.cpp
                   ${CMAKE_CURRENT_SOURCE_DIR}/headers/include/imgui-master/backends/imgui_impl_opengl2.h
